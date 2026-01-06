@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Entornos virtuales
+facturabot-env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de configuración
+.env
+*.ini
+*.cfg
+
+# Base de datos
+*.db
+*.sqlite3
+
+# Archivos temporales
+*.log
+*.tmp
+temp_*
+
+# Uploads y exports
+uploads/
+exports/
+*.xml
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
