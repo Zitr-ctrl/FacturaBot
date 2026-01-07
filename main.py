@@ -143,9 +143,9 @@ def ejemplo_completo():
                 print(f"❌ Error al exportar: {e}")
             
             # Generar reporte mensual
-            ahora = datetime.now()
+            fecha_primera = facturas_bd[0]['fecha_emision']
             try:
-                reporte = db.obtener_reporte_mensual(1, ahora.year, ahora.month)
+                reporte = db.obtener_reporte_mensual(1, fecha_primera.year, fecha_primera.month)
                 archivo_reporte = exporter.exportar_reporte_mensual(reporte)
                 print(f"✅ Reporte mensual generado: {archivo_reporte}")
                 
@@ -247,7 +247,7 @@ if __name__ == "__main__":
     # Puedes ejecutar el ejemplo completo o el simple
     
     # Para ejemplo simple (sin BD):
-    ejemplo_simple()
+    #ejemplo_simple()
     
     # Para ejemplo completo (con BD):
-    # ejemplo_completo()
+    ejemplo_completo()

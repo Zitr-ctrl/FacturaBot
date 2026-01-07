@@ -29,8 +29,9 @@ class SRIValidator:
         if not SRIValidator.validar_ruc(factura.ruc_emisor):
             errores.append(f"RUC emisor inválido: {factura.ruc_emisor}")
         
-        if not SRIValidator.validar_ruc(factura.ruc_comprador):
-            errores.append(f"RUC comprador inválido: {factura.ruc_comprador}")
+        # RUC comprador puede ser RUC (13 dígitos) o cédula (10 dígitos)
+        if not SRIValidator.validar_identificacion(factura.ruc_comprador):
+            errores.append(f"Identificación comprador inválida: {factura.ruc_comprador}")
         
         # Validar clave de acceso
         if not SRIValidator.validar_clave_acceso(factura.clave_acceso):
@@ -133,6 +134,73 @@ class SRIValidator:
         digito_verificador = 0 if residuo == 0 else 11 - residuo
         
         return digito_verificador == int(ruc[8])
+    
+    @staticmethod
+    def validar_identificacion(identificacion: str) -> bool:
+        """
+        Valida una identificación que puede ser RUC (13 dígitos) o cédula (10 dígitos)
+        
+        Args:
+            identificacion: RUC o cédula a validar
+            
+        Returns:
+            True si es válida, False en caso contrario
+        """
+        if not identificacion or not identificacion.isdigit():
+            return False
+        
+        longitud = len(identificacion)
+        
+        # RUC (13 dígitos)
+        if longitud == 13:
+            return SRIValidator.validar_ruc(identificacion)
+        
+        # Cédula (10 dígitos)
+        elif longitud == 10:
+            return SRIValidator.validar_cedula(identificacion)
+        
+        # Otras longitudes no son válidas
+        return False
+    
+    @staticmethod
+    def validar_cedula(cedula: str) -> bool:
+        """
+        Valida una cédula ecuatoriana (10 dígitos)
+        
+        Args:
+            cedula: Cédula de 10 dígitos
+            
+        Returns:
+            True si es válida, False en caso contrario
+        """
+        if not cedula or len(cedula) != 10:
+            return False
+        
+        if not cedula.isdigit():
+            return False
+        
+        # Los dos primeros dígitos deben corresponder a una provincia (01-24)
+        provincia = int(cedula[0:2])
+        if provincia < 1 or provincia > 24:
+            return False
+        
+        # El tercer dígito debe ser menor a 6 (persona natural)
+        tercer_digito = int(cedula[2])
+        if tercer_digito >= 6:
+            return False
+        
+        # Validar dígito verificador usando el algoritmo módulo 10
+        coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2]
+        suma = 0
+        
+        for i, coef in enumerate(coeficientes):
+            valor = int(cedula[i]) * coef
+            suma += valor if valor < 10 else valor - 9
+        
+        residuo = suma % 10
+        digito_verificador = 0 if residuo == 0 else 10 - residuo
+        
+        return digito_verificador == int(cedula[9])
     
     @staticmethod
     def validar_clave_acceso(clave: str) -> bool:

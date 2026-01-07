@@ -67,8 +67,9 @@ class Factura:
         if len(self.ruc_emisor) != 13:
             raise ValueError(f"RUC emisor inválido: {self.ruc_emisor}")
         
-        if len(self.ruc_comprador) != 13:
-            raise ValueError(f"RUC comprador inválido: {self.ruc_comprador}")
+        # RUC comprador puede ser cédula (10 dígitos) o RUC (13 dígitos)
+        if len(self.ruc_comprador) not in [10, 13]:
+            raise ValueError(f"Identificación comprador inválida (debe ser cédula de 10 o RUC de 13 dígitos): {self.ruc_comprador}")
         
         # Validar que el total calculado coincida
         total_calculado = (

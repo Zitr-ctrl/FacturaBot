@@ -61,8 +61,29 @@ class FacturaXMLParser:
         
         # Buscar el nodo principal de la factura
         factura_node = self.root.find('.//factura')
+        
+        # Si no se encuentra, puede estar codificado dentro de <comprobante>
         if factura_node is None:
-            factura_node = self.root.find('.//comprobante/factura')
+            comprobante_elem = self.root.find('.//comprobante')
+            if comprobante_elem is not None and comprobante_elem.text:
+                # El contenido está HTML-escaped, necesitamos parsearlo
+                try:
+                    import html
+                    comprobante_text = html.unescape(comprobante_elem.text)
+                    
+                    # Eliminar declaración XML si existe (causa conflicto)
+                    if comprobante_text.strip().startswith('<?xml'):
+                        # Encontrar el final de la declaración
+                        end_decl = comprobante_text.find('?>')
+                        if end_decl != -1:
+                            comprobante_text = comprobante_text[end_decl + 2:].strip()
+                    
+                    # Parsear el XML interno
+                    inner_root = etree.fromstring(comprobante_text.encode('utf-8'))
+                    factura_node = inner_root if inner_root.tag == 'factura' else inner_root.find('.//factura')
+                except Exception as e:
+                    print(f"Error al parsear comprobante interno: {e}")
+        
         if factura_node is None:
             factura_node = self.root  # El root mismo puede ser la factura
         
@@ -97,7 +118,14 @@ class FacturaXMLParser:
         
         # Ambiente y tipo de emisión
         ambiente = self._get_text(info_tributaria, 'ambiente')
-        ambiente = 'PRODUCCION' if ambiente == '1' else 'PRUEBAS'
+        # Puede venir como número (1/2) o como texto
+        if ambiente == '1' or ambiente.upper() == 'PRUEBAS':
+            ambiente = 'PRUEBAS'
+        elif ambiente == '2' or ambiente.upper() == 'PRODUCCION' or ambiente.upper() == 'PRODUCCIÓN':
+            ambiente = 'PRODUCCION'
+        else:
+            ambiente = 'PRODUCCION'  # Default
+            
         tipo_emision = self._get_text(info_tributaria, 'tipoEmision')
         tipo_emision = 'NORMAL' if tipo_emision == '1' else 'CONTINGENCIA'
         
