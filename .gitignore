@@ -33,13 +33,3 @@ facturabot-env/
 *.tmp
 temp_*
 
-# Uploads y exports
-*.xml
-*.pdf
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Jupyter
-.ipynb_checkpoints/

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autorizacion>
+    <estado>AUTORIZADO</estado>
+    <numeroAutorizacion>05012025010912345678001110010010000000011234567813</numeroAutorizacion>
+    <fechaAutorizacion>05/01/2025 10:30:00</fechaAutorizacion>
+    <ambiente>PRODUCCION</ambiente>
+    <comprobante>
+        <![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <factura id="comprobante" version="1.1.0">
+            <infoTributaria>
+                <ambiente>1</ambiente>
+                <tipoEmision>1</tipoEmision>
+                <razonSocial>DISTRIBUIDORA COMERCIAL DEL ECUADOR S.A.</razonSocial>
+                <nombreComercial>DISTRIEC</nombreComercial>
+                <ruc>0912345678001</ruc>
+                <claveAcceso>05012025010912345678001110010010000000011234567813</claveAcceso>
+                <codDoc>01</codDoc>
+                <estab>001</estab>
+                <ptoEmi>001</ptoEmi>
+                <secuencial>000000001</secuencial>
+                <dirMatriz>AV. PRINCIPAL 123 Y CALLE SECUNDARIA, GUAYAQUIL</dirMatriz>
+            </infoTributaria>
+            <infoFactura>
+                <fechaEmision>05/01/2025</fechaEmision>
+                <dirEstablecimiento>AV. PRINCIPAL 123 Y CALLE SECUNDARIA</dirEstablecimiento>
+                <contribuyenteEspecial>5368</contribuyenteEspecial>
+                <obligadoContabilidad>SI</obligadoContabilidad>
+                <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
+                <razonSocialComprador>EMPRESA COMPRADORA CIA LTDA</razonSocialComprador>
+                <identificacionComprador>0987654321001</identificacionComprador>
+                <direccionComprador>AV. COMERCIO 456, GUAYAQUIL</direccionComprador>
+                <totalSinImpuestos>1500.00</totalSinImpuestos>
+                <totalDescuento>0.00</totalDescuento>
+                <totalConImpuestos>
+                    <totalImpuesto>
+                        <codigo>2</codigo>
+                        <codigoPorcentaje>2</codigoPorcentaje>
+                        <descuentoAdicional>0.00</descuentoAdicional>
+                        <baseImponible>1500.00</baseImponible>
+                        <tarifa>12</tarifa>
+                        <valor>180.00</valor>
+                    </totalImpuesto>
+                </totalConImpuestos>
+                <propina>0.00</propina>
+                <importeTotal>1680.00</importeTotal>
+                <moneda>DOLAR</moneda>
+                <pagos>
+                    <pago>
+                        <formaPago>20</formaPago>
+                        <total>1680.00</total>
+                        <plazo>30</plazo>
+                        <unidadTiempo>dias</unidadTiempo>
+                    </pago>
+                </pagos>
+            </infoFactura>
+            <detalles>
+                <detalle>
+                    <codigoPrincipal>PROD-001</codigoPrincipal>
+                    <codigoAuxiliar>AUX-001</codigoAuxiliar>
+                    <descripcion>LAPTOP DELL INSPIRON 15 - CORE I5 8GB RAM 256GB SSD</descripcion>
+                    <cantidad>2.00</cantidad>
+                    <precioUnitario>600.00</precioUnitario>
+                    <descuento>0.00</descuento>
+                    <precioTotalSinImpuesto>1200.00</precioTotalSinImpuesto>
+                    <impuestos>
+                        <impuesto>
+                            <codigo>2</codigo>
+                            <codigoPorcentaje>2</codigoPorcentaje>
+                            <tarifa>12</tarifa>
+                            <baseImponible>1200.00</baseImponible>
+                            <valor>144.00</valor>
+                        </impuesto>
+                    </impuestos>
+                </detalle>
+                <detalle>
+                    <codigoPrincipal>PROD-002</codigoPrincipal>
+                    <descripcion>MOUSE INALAMBRICO LOGITECH M185</descripcion>
+                    <cantidad>5.00</cantidad>
+                    <precioUnitario>20.00</precioUnitario>
+                    <descuento>0.00</descuento>
+                    <precioTotalSinImpuesto>100.00</precioTotalSinImpuesto>
+                    <impuestos>
+                        <impuesto>
+                            <codigo>2</codigo>
+                            <codigoPorcentaje>2</codigoPorcentaje>
+                            <tarifa>12</tarifa>
+                            <baseImponible>100.00</baseImponible>
+                            <valor>12.00</valor>
+                        </impuesto>
+                    </impuestos>
+                </detalle>
+                <detalle>
+                    <codigoPrincipal>PROD-003</codigoPrincipal>
+                    <descripcion>TECLADO MECANICO RGB GAMING</descripcion>
+                    <cantidad>2.00</cantidad>
+                    <precioUnitario>100.00</precioUnitario>
+                    <descuento>0.00</descuento>
+                    <precioTotalSinImpuesto>200.00</precioTotalSinImpuesto>
+                    <impuestos>
+                        <impuesto>
+                            <codigo>2</codigo>
+                            <codigoPorcentaje>2</codigoPorcentaje>
+                            <tarifa>12</tarifa>
+                            <baseImponible>200.00</baseImponible>
+                            <valor>24.00</valor>
+                        </impuesto>
+                    </impuestos>
+                </detalle>
+            </detalles>
+            <infoAdicional>
+                <campoAdicional nombre="Email">ventas@distriec.com.ec</campoAdicional>
+                <campoAdicional nombre="Telefono">04-2123456</campoAdicional>
+                <campoAdicional nombre="Forma de Pago">TRANSFERENCIA</campoAdicional>
+            </infoAdicional>
+        </factura>]]>
+    </comprobante>
+</autorizacion>
