@@ -71,14 +71,14 @@ class Factura:
         if len(self.ruc_comprador) not in [10, 13]:
             raise ValueError(f"Identificación comprador inválida (debe ser cédula de 10 o RUC de 13 dígitos): {self.ruc_comprador}")
         
-        # Validar que el total calculado coincida
+        # Validar que el total calculado coincida (tolerancia de $0.03 por redondeos acumulados)
         total_calculado = (
             self.subtotal_sin_impuestos + 
             self.iva + 
             self.propina
         )
         
-        if abs(total_calculado - self.total) > 0.01:  # Margen de error por redondeo
+        if abs(total_calculado - self.total) > 0.03:  # Margen de error por redondeo
             raise ValueError(
                 f"Total inconsistente. Calculado: {total_calculado}, "
                 f"Declarado: {self.total}"

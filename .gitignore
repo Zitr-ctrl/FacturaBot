@@ -34,8 +34,6 @@ facturabot-env/
 temp_*
 
 # Uploads y exports
-uploads/
-exports/
 *.xml
 *.pdf
 

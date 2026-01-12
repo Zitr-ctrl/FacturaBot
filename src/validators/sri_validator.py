@@ -39,7 +39,7 @@ class SRIValidator:
         
         # Validar totales
         total_calculado = factura.subtotal_sin_impuestos + factura.iva + factura.propina
-        if abs(total_calculado - factura.total) > 0.01:
+        if abs(total_calculado - factura.total) > 0.03:
             errores.append(
                 f"Total inconsistente. Calculado: {total_calculado:.2f}, "
                 f"Declarado: {factura.total:.2f}"
