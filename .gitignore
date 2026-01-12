@@ -9,27 +9,10 @@ venv/
 ENV/
 .venv
 
-# Entornos virtuales
-facturabot-env/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
 
 # Archivos de configuración
 .env
 *.ini
 *.cfg
 
-# Base de datos
-*.db
-*.sqlite3
-
-# Archivos temporales
-*.log
-*.tmp
-temp_*
 
